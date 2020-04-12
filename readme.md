@@ -2,7 +2,7 @@
 
 This project is an implementation of the Google Maps API. It currently uses the Walmart Database accessed through their API. The ideal case would be to use this code with a client's database and API to locate stores on the website.
 
-###### Features
+#### Features
 This project is based on the CleverProgrammer Javascript challenge. I followed some instructions but went beyond by adding the following features:
 - App works anywhere, not just LA. It uses an external API to handle data manipulation from a database (made by Walmart).
 - App asks for the users location, and will center the map on their current zipcode.
