@@ -5,7 +5,9 @@ var data;
 var storesData = [];
 
 window.onload = async () => {
-
+  /*
+    Get the users location
+  */
   try {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -63,7 +65,9 @@ async function zipcodeToLocation(startPosition) {
   return currentZipcode;
 }
 
-
+/*
+  Initialize map
+*/
 function initMap(startPosition = { lat: 43.81564, lng: -111.78523 }) {
   map = new google.maps.Map(document.getElementById('map'), {
     center: startPosition,
@@ -86,9 +90,21 @@ async function searchStores(currentZipcode) {
 
   let data = await response.json();
   storesData = data.payload.storesData.stores;
+  clearLocations();
   displayStores(storesData);
   displayStoreMarkers(storesData);
   setOnClickListener();
+}
+
+/*
+  Clears all previous markers on map
+*/
+function clearLocations(){
+  infoWindow.close();
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
+  }
+  markers.length = 0;
 }
 
 /*
@@ -131,6 +147,9 @@ function displayStores(storesData) {
 
 }
 
+/*
+  Display the markers on the map
+*/
 function displayStoreMarkers(storesData) {
   var bounds = new google.maps.LatLngBounds();
   var index = 1;
@@ -147,6 +166,9 @@ function displayStoreMarkers(storesData) {
   map.fitBounds(bounds);
 }
 
+/*
+  Creates an individual map marker
+*/
 function createMarker(latlng, name, address, phone, index) {
   var html = `<div class="store-info-window">
                 <h4>${name}</h4>
@@ -166,6 +188,9 @@ function createMarker(latlng, name, address, phone, index) {
   markers.push(marker);
 }
 
+/*
+  Add an onclick listener for each list item
+*/
 function setOnClickListener() {
   var storeElements = document.querySelectorAll('.store-list-item');
   storeElements.forEach(function (elem, index) {
@@ -175,6 +200,9 @@ function setOnClickListener() {
   })
 }
 
+/*
+  Simply opens a new tab with directions to the clicked store
+*/
 function getDirections(address) {
   window.open(`https://www.google.com/maps/dir/?api=1&destination=${address}`, "_blank");
 }
