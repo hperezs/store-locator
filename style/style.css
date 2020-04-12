@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+#map {
+    width: 100%;
+    height: 90%;
+    min-height: 100vh;
+}
+
+.app-interface {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    top: 86px;
+    left: 40px;
+    width: 475px;
+}
+
+.app-title-container {
+    background-color: #ffffffc0;
+    border-radius: 40px;
+    padding: 20px;
+    
+}
+
+.app-title {
+    color: #333;
+    font-size: 3.5em;
+    text-transform: uppercase;
+}   
+
+.input-container {
+    width: 75%;
+    align-self: center;
+    margin-top: 38px;
+    background-color: #333333;
+    padding: 20px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.input-container input {
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5em;
+}
+
+.input-container input:focus{
+    outline: none;
+}
+
+.input-container input::placeholder {
+    color: #ffffff;
+}
+
+.input-container i {
+    font-size: 2em;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.stores-list-container {
+    width: 75%;
+    align-self: center;
+    height: 60vh;
+    margin-top: 24px;
+    border-radius: 40px;
+    background-color: #ffffff;
+    display: flex;
+    flex-flow: column;
+    overflow-y: scroll;
+}
+
+.store-list-item { 
+    display: flex;
+    justify-content: space-between;
+    margin: 24px;
+    padding: 12px;
+    border-bottom: 1px solid #8f8f8f91;
+    transition: background-color 0.25s ease-in;
+}
+
+.store-info h4{ 
+    font-size: 1.4em;
+}
+
+.store-info h5 {
+    font-size: 1em;
+}
+
+.store-list-item:hover {
+    background-color: rgb(224, 223, 223);
+}
+
+.store-address {
+    color: rgb(59, 59, 59);
+}
+
+.distance-to-container { 
+    display: flex;
+    width: 60px;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.distance-to-container i {
+    font-size: 1.6em;
+    cursor: pointer;
+}
+
+.store-info-window { 
+    min-width: 200px;
+}
+
+.open-until {
+    font-size: 1.4em;
+}
+
+.info-window-icon { 
+    color: #4f89e3;
+    font-size: 1.5em;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
