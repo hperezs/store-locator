@@ -1,6 +1,6 @@
 ## Store Locator
 
-This project is an implementation of the Google Maps API. It currently uses the Walmart Database accessed through their API. The ideal case would be to use this code with a client's database and API to locate stores on the website.
+This project is an implementation of the Google Maps API. It currently uses the Walmart Database accessed through their API. The ideal case would be to use this code to build a locator for a client using their database and creating an API to handle the data. Since I have no clients, I used Walmart's database as an example.
 
 #### Features
 This project is based on the CleverProgrammer Javascript challenge. I followed some instructions but went beyond by adding the following features:
