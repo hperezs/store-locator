@@ -16,4 +16,5 @@ See live version here: https://hperezs.github.io/store-locator/
 
 #### Todos
 - Correctly display store availability. 
+- Create mobile device responsiveness.
 - Error handling.
