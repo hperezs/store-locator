@@ -19,4 +19,4 @@ See live version here: https://hperezs.github.io/store-locator/
 - Create mobile device responsiveness.
 - Error handling.
 
-**Disclaimer:** *I do not own any rights or credit whatsoever over the data handled in this application and the API that handles it. I merely used it as an example and it is not meant to be used for any real functionality other than showcasing JavaScript principles and the implementation of Google Maps APIs.*
+> **Disclaimer:** *I do not own any rights or credit whatsoever over the data handled in this application and the API that handles it. I merely used it as an example and it is not meant to be used for any real functionality other than showcasing JavaScript principles and the implementation of Google Maps APIs.*
