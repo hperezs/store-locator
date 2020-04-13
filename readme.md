@@ -13,3 +13,7 @@ This project is based on the CleverProgrammer Javascript challenge. I followed s
 - Customized the UI.
 
 See live version here: https://hperezs.github.io/store-locator/
+
+#### Todos
+- Correctly display store availability. 
+- Error handling.
