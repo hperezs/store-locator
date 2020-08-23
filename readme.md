@@ -11,12 +11,12 @@ This project is based on the CleverProgrammer Javascript challenge. I followed s
 - App will show how far a store is from the user's location (again, throught the Walmart API).
 - App is able to open a new window with directions to the store for the user by pressing on either one of two directions buttons.
 - Customized the UI.
+- Create mobile device responsiveness.
 
 See live version here: https://hperezs.github.io/store-locator/
 
 #### Todos
 - Correctly display store availability. 
-- Create mobile device responsiveness.
 - Error handling.
 
 > **Disclaimer:** *I do not own any rights or credit whatsoever over the data handled in this application and the API that handles it. I merely used it as an example and it is not meant to be used for any real functionality other than showcasing JavaScript principles and the implementation of Google Maps APIs.*
