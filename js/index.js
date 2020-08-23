@@ -10,11 +10,23 @@ window.onload = async () => {
   */
   try {
     if (navigator.geolocation) {
+      // Get the user's location through the browser
       navigator.geolocation.getCurrentPosition((position) => {
         startPosition = { lat: position.coords.latitude, lng: position.coords.longitude };
         usersLocation = startPosition;
+
         initMap(startPosition);
-        zipcodeToLocation(startPosition).then((currentZipcode => searchStores(currentZipcode)));
+
+        // Begin data handling process
+        main();
+
+        // Set current position marker
+        new google.maps.Marker({
+          position: startPosition,
+          icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+          map: map
+        });
+
       });
     } else {
       console.log('Geolocation is not supported by this browser. Setting default location');
@@ -44,13 +56,23 @@ window.onload = async () => {
   let inputElement = document.getElementById('zipcode-input');
   inputElement.addEventListener("keyup", function (event) {
     if (event.key === 'Enter') {
-      searchStores();
+      main();
     }
   })
-
-
 }
 
+/*
+  Iterates through the process of fetching data, creating markers, and displaying data
+*/
+async function main() {
+  var currentZipcode = await zipcodeToLocation(startPosition);
+  await searchStores(currentZipcode);
+  clearLocations();
+  displayStores(storesData);
+  displayStoreMarkers(storesData);
+  setOnClickListener();
+  document.querySelector('.store-list-item').click();
+}
 /*
     Gets the users Zipcode based on their location using the Geocode API by Google Maps
 */
@@ -71,9 +93,9 @@ async function zipcodeToLocation(startPosition) {
 function initMap(startPosition = { lat: 43.81564, lng: -111.78523 }) {
   map = new google.maps.Map(document.getElementById('map'), {
     center: startPosition,
-    zoom: 11,
+    zoom: 7,
     mapTypeId: 'roadmap',
-    mapTypeControlOptions: { style: google.maps.MapTypeControlStyle.DROPDOWN_MENU }
+    disableDefaultUI: true
   });
   infoWindow = new google.maps.InfoWindow();
 }
@@ -84,22 +106,18 @@ function initMap(startPosition = { lat: 43.81564, lng: -111.78523 }) {
 async function searchStores(currentZipcode) {
   let input = document.getElementById('zipcode-input').value;
   if (input != '') { currentZipcode = input };
-  let response = await fetch(`https://cors-anywhere.herokuapp.com/https://www.walmart.com/store/finder/electrode/api/stores?singleLineAddr=${currentZipcode}&distance=20`, {
+  let response = await fetch(`https://morning-anchorage-80357.herokuapp.com/https://www.walmart.com/store/finder/electrode/api/stores?singleLineAddr=${currentZipcode}&distance=20`, {
     method: 'GET',
   }).then((res) => res);
 
   let data = await response.json();
-  storesData = data.payload.storesData.stores;
-  clearLocations();
-  displayStores(storesData);
-  displayStoreMarkers(storesData);
-  setOnClickListener();
+  storesData = await data.payload.storesData.stores;
 }
 
 /*
   Clears all previous markers on map
 */
-function clearLocations(){
+function clearLocations() {
   infoWindow.close();
   for (var i = 0; i < markers.length; i++) {
     markers[i].setMap(null);
@@ -112,7 +130,6 @@ function clearLocations(){
 */
 function displayStores(storesData) {
   var html = '';
-  var index = 1;
   storesData.map(store => {
     html += `
       <div class="store-list-item">
@@ -140,7 +157,6 @@ function displayStores(storesData) {
         </div>
       </div>
   `;
-    index += 1;
   });
 
   document.querySelector('.stores-list-container').innerHTML = html;
@@ -163,7 +179,15 @@ function displayStoreMarkers(storesData) {
     index += 1;
   });
 
-  map.fitBounds(bounds);
+  // Zoom in to the closest store
+  var closestStore = {
+    lat: storesData[0].geoPoint.latitude,
+    lng: storesData[0].geoPoint.longitude,
+  }
+  map.setZoom(14);
+  map.setCenter(closestStore);
+  map.panTo(closestStore);
+
 }
 
 /*

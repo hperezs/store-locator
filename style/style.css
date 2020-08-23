@@ -17,7 +17,7 @@ body {
     z-index: 1;
     display: flex;
     flex-direction: column;
-    top: 86px;
+    top: 68px;
     left: 40px;
     width: 475px;
 }
@@ -26,21 +26,19 @@ body {
     background-color: #ffffffc0;
     border-radius: 40px;
     padding: 20px;
-    
 }
 
 .app-title {
     color: #333;
     font-size: 3.5em;
     text-transform: uppercase;
-}   
+}
 
 .input-container {
-    width: 75%;
     align-self: center;
-    margin-top: 38px;
+    margin-top: 0.8em;
     background-color: #333333;
-    padding: 20px;
+    padding: 1.2em;
     border-radius: 40px;
     display: flex;
     justify-content: space-around;
@@ -53,7 +51,7 @@ body {
     font-size: 1.5em;
 }
 
-.input-container input:focus{
+.input-container input:focus {
     outline: none;
 }
 
@@ -71,7 +69,7 @@ body {
     width: 75%;
     align-self: center;
     height: 60vh;
-    margin-top: 24px;
+    margin-top: 0.8em;
     border-radius: 40px;
     background-color: #ffffff;
     display: flex;
@@ -79,7 +77,7 @@ body {
     overflow-y: scroll;
 }
 
-.store-list-item { 
+.store-list-item {
     display: flex;
     justify-content: space-between;
     margin: 24px;
@@ -88,7 +86,7 @@ body {
     transition: background-color 0.25s ease-in;
 }
 
-.store-info h4{ 
+.store-info h4 {
     font-size: 1.4em;
 }
 
@@ -104,7 +102,7 @@ body {
     color: rgb(59, 59, 59);
 }
 
-.distance-to-container { 
+.distance-to-container {
     display: flex;
     width: 60px;
     flex-direction: column;
@@ -117,7 +115,7 @@ body {
     cursor: pointer;
 }
 
-.store-info-window { 
+.store-info-window {
     min-width: 200px;
 }
 
@@ -125,10 +123,110 @@ body {
     font-size: 1.4em;
 }
 
-.info-window-icon { 
+.info-window-icon {
     color: #4f89e3;
     font-size: 1.5em;
     margin-right: 8px;
     cursor: pointer;
 }
 
+/* 
+    MEDIA QUERIES: To handle mobile device responsiveness 
+*/
+
+@media screen and (max-width: 992px) {
+    .app-interface {
+        width: 250px;
+    }
+    .app-title-container {
+        padding: 12px;
+    }
+    .app-title {
+        font-size: 1.5em;
+    }
+    .input-container {
+        padding: 12px;
+    }
+    .input-container input {
+        font-size: 0.8em;
+    }
+    .input-container i {
+        font-size: 1em;
+    }
+    .stores-list-container {
+        width: 225px;
+        align-self: center;
+        height: 60vh;
+        margin-top: 0.8em;
+        border-radius: 40px;
+        background-color: #ffffff;
+        display: flex;
+        flex-flow: column;
+        overflow-y: scroll;
+    }
+    .store-list-item {
+        display: flex;
+        justify-content: space-between;
+        margin: 18px;
+        padding: 10px;
+        border-bottom: 1px solid #8f8f8f91;
+        transition: background-color 0.25s ease-in;
+    }
+    .store-info h4 {
+        font-size: 1em;
+    }
+    .store-info h5 {
+        font-size: 0.8em;
+    }
+}
+
+/* On screens that are 600px or less*/
+
+@media screen and (max-width: 600px) {
+    #map{
+        width: 80%;
+        min-height: 55vh;
+        margin: auto;
+        border-radius: 5px;
+    }
+    .app-interface {
+        position: relative;
+        width: 80%;
+        height: 40vh;
+        top: 0px;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .app-title-container {
+        width: 75%;
+        padding: 8px;
+        margin-top: 10%;
+        border-radius: 2px;
+    }
+    .app-title {
+        font-size: 1.3em;
+        margin-bottom: 0;
+    }
+    .input-container {
+        padding: 8px;
+        background-color: #111111;
+    }
+    .input-container input {
+        font-size: 1em;
+    }
+    .input-container i {
+        font-size: 1.2em;
+    }
+    .stores-list-container {
+        height: 25vh;
+        width: 100%;
+        justify-self: end;
+        border-radius: 5px;
+    }
+    .store-info-window h4{
+        font-size: small;
+    }
+    .store-info-window h6{
+        font-size: smaller;
+    }
+}
